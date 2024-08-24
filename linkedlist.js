@@ -1,9 +1,9 @@
 // Linked List Implementation
 
 class Node {
-  constructor() {
-    let value = null;
-    let nextNode = null;
+  constructor(value, nextNode) {
+    this.value = value;
+    this.nextNode = nextNode;
   }
 }
 
@@ -14,9 +14,8 @@ class LinkedList {
 
   append(value) {
     if (this.headNode === null) {
-      this.headNode = new Node();
-      this.headNode.value = value;
-      this.headNode.nextNode = null;
+      this.headNode = new Node(value, null);
+      console.log(this.headNode);
       return;
     }
 
@@ -27,18 +26,12 @@ class LinkedList {
       nextNode = node.nextNode;
     }
 
-    let newNode = new Node();
-    newNode.value = value;
-    newNode.nextNode = null;
-
+    let newNode = new Node(value, null);
     node.nextNode = newNode;
   }
 
   prepend(value) {
-    let node = new Node();
-    node.value = value;
-    node.nextNode = this.headNode;
-
+    let node = new Node(value, this.headNode);
     this.headNode = node;
   }
 
@@ -262,11 +255,11 @@ list.prepend("july");
 list.toString();
 
 list.pop();
-/* console.log(list.contains("cat"));
-console.log(list.find("ze")); */
+console.log(list.contains("cat"));
+console.log(list.find("ze"));
 
 /* list.removeAt(1); */
-list.insertAt("ze", 2);
+/* list.insertAt("ze", 2); */
 list.toString();
 
 /* console.log(list.size());
